@@ -1,0 +1,291 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# (c) 2015, Adam Števko <adam.stevko@gmail.com>
+#
+# This file is part of Ansible
+#
+# Ansible is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ansible is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ansible. If not, see <http://www.gnu.org/licenses/>.
+#
+
+DOCUMENTATION = '''
+---
+module: solaris_project
+short_description: Manage Solaris/illumos projects
+description:
+    - Create, delete or update Solaris/illumos projects
+version_added: "1.8"
+author: Adam Števko (@xen0l)
+options:
+    comment:
+        description:
+            - Project comment.
+        required: false
+        default: null
+    project_file:
+        description:
+            - Project file location.
+        required: false
+        default: /etc/project
+    project_id:
+        description:
+            -  Set the project ID of the new project.
+        required: false
+        default: null
+    name:
+        description:
+            - Project name.
+        required: true
+    users:
+        description:
+            - User list for the project.
+        required: false
+        default: null
+        aliases: ['user']
+    groups:
+        description:
+            - Group list for the project.
+        required: false
+        default: null
+        aliases: ['group']
+    attributes:
+        description:
+            - Attribute list for the project.
+        required: false
+        default: null
+    append:
+        description:
+            - When modifying Solaris/illumos projects, users, group
+              and attributes should be added to the existing list.
+        required: false
+        default: false
+    remove:
+        description:
+            - When modifying Solaris/illumos projects, users, group
+              and attributes should be remove from the existing list.
+        required: false
+        default: false
+    state:
+        description:
+            - Create or delete Solaris/illumos project.
+        required: false
+        default: "present"
+        choices: [ "present", "absent" ]
+'''
+
+EXAMPLES = '''
+# Create new Solaris project 'accounting' with users 'alice' and 'bob'
+- solaris_project: name=accounting users='alice,bob' state=present
+
+# Add user 'eve' to existing project
+- solaris_project: name=accounting user=eve append=true
+
+# Remove user 'alice' from existing project
+- solaris_project: name=accounting user=alice remove=true
+
+# Remove 'accounting' project
+- solaris_project: name=accounting state=absent
+'''
+
+PROJECTFILE = '/etc/project'
+
+
+class Project(object):
+
+    def __init__(self, module):
+        self.module = module
+
+        self.attributes = module.params['attributes']
+        self.append = module.params['append']
+        self.remove = module.params['remove']
+        self.groups = module.params['groups']
+        self.users = module.params['users']
+        self.comment = module.params['comment']
+        self.project_file = module.params['project_file']
+        self.project_id = module.params['project_id']
+        self.name = module.params['name']
+        self.state = module.params['state']
+
+    def project_exists(self):
+        with open(self.project_file, 'r') as f:
+            for line in f.readlines():
+                if self.name == line.split(':')[0]:
+                    return True
+
+        return False
+
+    def create_project(self):
+        cmd = [self.module.get_bin_path('projadd', True)]
+
+        if self.project_file != PROJECTFILE:
+            cmd.append('-f')
+            cmd.append(self.project_file)
+
+        if self.project_id:
+            cmd.append('-p')
+            cmd.append(self.project_id)
+
+        if self.comment:
+            cmd.append('-c')
+            cmd.append(self.comment)
+
+        if self.users:
+            cmd.append('-U')
+            cmd.append(self.users)
+
+        if self.groups:
+            cmd.append('-G')
+            cmd.append(self.groups)
+
+        if self.attributes:
+            for attribute in self.attributes.split(';'):
+                cmd.append('-K')
+                cmd.append(attribute)
+
+        cmd.append(self.name)
+        return self.module.run_command(cmd)
+
+    def delete_project(self):
+        cmd = [self.module.get_bin_path('projdel', True)]
+
+        if self.project_file != PROJECTFILE:
+            cmd.append('-f')
+            cmd.append(self.project_file)
+
+        cmd.append(self.name)
+
+        return self.module.run_command(cmd)
+
+    def modify_project(self):
+
+        # projname:projid:comment:user-list:group-list:attributes
+
+        _project_entry = self._get_entry_from_project_file()
+
+        cmd = [self.module.get_bin_path('projmod', True)]
+
+        if self.project_file != PROJECTFILE:
+            cmd.append('-f')
+            cmd.append(self.project_file)
+
+        if self.project_id is not None and self.project_id != _project_entry[1]:
+            cmd.append('-p')
+            cmd.append(self.project_id)
+
+        if self.comment is not None and self.comment != _project_entry[2]:
+            cmd.append('-c')
+            cmd.append(self.comment)
+
+        if self.append:
+            cmd.append('-a')
+
+        if self.remove:
+            cmd.append('-r')
+
+        if self.users is not None:
+            cmd.append('-U')
+            cmd.append(self.users)
+
+        if self.groups is not None:
+            cmd.append('-G')
+            cmd.append(self.groups)
+
+        if self.attributes is not None:
+            for attribute in self.attributes.split(';'):
+                cmd.append('-K')
+                cmd.append(attribute)
+
+        # skip if no changes to be made
+        if len(cmd) == 1:
+            return (None, '', '')
+        elif self.module.check_mode:
+            return (0, '', '')
+
+        cmd.append(self.name)
+
+        return self.module.run_command(cmd)
+
+    def _get_entry_from_project_file(self):
+
+        with open(self.project_file, "r") as f:
+            for line in f.readlines():
+                if self.name == line.split(':')[0]:
+                    return line.split(':')
+
+
+def main():
+    module = AnsibleModule(
+        argument_spec=dict(
+            name=dict(required=True, aliases=['projname']),
+            project_file=dict(default=PROJECTFILE),
+            project_id=dict(default=None, aliases=['projid']),
+            comment=dict(default=None),
+            attributes=dict(default=None),
+            groups=dict(default=None, aliases=['group']),
+            users=dict(default=None, aliases=['user']),
+            state=dict(default='present', choices=['absent', 'present']),
+            # following options are specific to projmod
+            append=dict(default=False, choices=BOOLEANS),
+            remove=dict(default=False, choices=BOOLEANS),
+        ),
+        mutually_exclusive=[
+            ['append', 'remove']
+        ],
+        supports_check_mode=True
+    )
+
+    project = Project(module)
+
+    rc = None
+    out = ''
+    err = ''
+    result = {}
+    result['name'] = project.name
+    result['state'] = project.state
+    result['projid'] = project.project_id
+    result['users'] = project.users
+    result['groups'] = project.groups
+    result['attributes'] = project.attributes
+
+    if project.state == 'absent':
+        if project.project_exists():
+            if module.check_mode:
+                module.exit_json(changed=True)
+            (rc, out, err) = project.delete_project()
+            if rc != 0:
+                module.fail_json(name=project.name, msg=err, rc=rc)
+    elif project.state == 'present':
+        if not project.project_exists():
+            if module.check_mode:
+                module.exit_json(changed=True)
+            (rc, out, err) = project.create_project()
+        else:
+            (rc, out, err) = project.modify_project()
+        if rc is not None and rc != 0:
+            module.fail_json(name=project.name, msg=err, rc=rc)
+
+    if rc is None:
+        result['changed'] = False
+    else:
+        result['changed'] = True
+
+    if out:
+        result['stdout'] = out
+    if err:
+        result['stderr'] = err
+
+    module.exit_json(**result)
+
+from ansible.module_utils.basic import *
+main()
