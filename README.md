@@ -39,6 +39,9 @@ I plan to develop more modules. The list of following modules, which I will be w
 ### SMF
 - svccfg - manage SMF properties on Solaris/illumos systems
 
+### Boot Environments
+- beadm - manage ZFS boot environments on Solaris/illumos/FreeBSD systems
+
 ### Other ideas
 I am also open to new ideas for modules and collaboration.
 
