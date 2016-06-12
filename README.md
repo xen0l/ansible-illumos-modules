@@ -42,6 +42,9 @@ I plan to develop more modules. The list of following modules, which I will be w
 ### Boot Environments
 - beadm - manage ZFS boot environments on Solaris/illumos/FreeBSD systems
 
+### IPS
+- pkg5_mediator - manage IPS mediators on Solaris/illumos systems
+
 ### Other ideas
 I am also open to new ideas for modules and collaboration.
 
