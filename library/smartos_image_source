@@ -25,7 +25,7 @@ module: smartos_image_source
 short_description: Manage image sources on SmartOS compute nodes.
 description:
     - Add/delete image source on SmartOS compute nodes.
-version_added: "2.0"
+version_added: "2.1"
 author: Adam Števko (@xen0l)
 options:
     url:

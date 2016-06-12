@@ -25,7 +25,7 @@ module: dladm_etherstub
 short_description: Manage etherstubs on Solaris/illumos systems.
 description:
     - Create or delete etherstubs on Solaris/illumos systems.
-version_added: "2.0"
+version_added: "2.1"
 author: Adam Števko (@xen0l)
 options:
     name:
@@ -104,7 +104,7 @@ def main():
     module = AnsibleModule(
         argument_spec=dict(
             name=dict(required=True),
-            temporary=dict(default=False, choices=BOOLEANS),
+            temporary=dict(default=False, type='bool'),
             state=dict(default='present', choices=['absent', 'present']),
         ),
         supports_check_mode=True

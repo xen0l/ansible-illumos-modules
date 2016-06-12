@@ -25,7 +25,7 @@ module: solaris_project
 short_description: Manage Solaris/illumos projects
 description:
     - Create, delete or update Solaris/illumos projects
-version_added: "1.8"
+version_added: "2.1"
 author: Adam Števko (@xen0l)
 options:
     comment:
@@ -236,8 +236,8 @@ def main():
             users=dict(default=None, aliases=['user']),
             state=dict(default='present', choices=['absent', 'present']),
             # following options are specific to projmod
-            append=dict(default=False, choices=BOOLEANS),
-            remove=dict(default=False, choices=BOOLEANS),
+            append=dict(default=False, type='bool'),
+            remove=dict(default=False, type='bool'),
         ),
         mutually_exclusive=[
             ['append', 'remove']

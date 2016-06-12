@@ -25,7 +25,7 @@ module: ipadm_prop
 short_description: Manage protocol properties on Solaris/illumos systems.
 description:
     - Modify protocol properties on Solaris/illumos systems.
-version_added: "2.0"
+version_added: "2.1"
 author: Adam Števko (@xen0l)
 options:
     protocol:
@@ -170,7 +170,7 @@ def main():
             protocol=dict(required=True, choices=SUPPORTED_PROTOCOLS),
             property=dict(required=True),
             value=dict(required=False),
-            temporary=dict(default=False, choices=BOOLEANS),
+            temporary=dict(default=False, type='bool'),
             state=dict(
                 default='present', choices=['absent', 'present', 'reset']),
         ),

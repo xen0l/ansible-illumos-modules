@@ -25,7 +25,7 @@ module: dladm_vnic
 short_description: Manage VNICs on Solaris/illumos systems.
 description:
     - Create or delete VNICs on Solaris/illumos systems.
-version_added: "2.0"
+version_added: "2.1"
 author: Adam Števko (@xen0l)
 options:
     name:
@@ -42,11 +42,13 @@ options:
         required: false
         default: false
     mac:
+        description:
             - Sets the VNIC's MAC address. Must be valid unicast MAC address.
         required: false
         default: false
         aliases: [ "macaddr" ]
     vlan:
+        description:
             - Enable VLAN tagging for this VNIC. The VLAN tag will have id
               I(vlan).
         required: false
@@ -152,7 +154,7 @@ def main():
             link=dict(required=True),
             mac=dict(default=None, aliases=['macaddr']),
             vlan=dict(default=None, aliases=['vlan_id']),
-            temporary=dict(default=False, choices=BOOLEANS),
+            temporary=dict(default=False, type='bool'),
             state=dict(default='present', choices=['absent', 'present']),
         ),
         supports_check_mode=True

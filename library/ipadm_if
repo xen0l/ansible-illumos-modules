@@ -26,7 +26,7 @@ short_description: Manage IP interfaces  on Solaris/illumos systems.
 description:
     - Create, delete, enable or disable IP interfaces on Solaris/illumos
       systems.
-version_added: "2.0"
+version_added: "2.1"
 author: Adam Števko (@xen0l)
 options:
     name:
@@ -87,7 +87,7 @@ class IPInterface(object):
 
         (rc, out, err) = self.module.run_command(cmd)
         if rc != 0:
-            self.module.fail_json(name=self.name, rc=rc, err=err)
+            self.module.fail_json(name=self.name, rc=rc, msg=err)
 
         return 'disabled' in out
 
@@ -138,7 +138,7 @@ def main():
     module = AnsibleModule(
         argument_spec=dict(
             name=dict(required=True),
-            temporary=dict(default=False, choices=BOOLEANS),
+            temporary=dict(default=False, type='bool'),
             state=dict(default='present', choices=['absent',
                                                    'present',
                                                    'enabled',
