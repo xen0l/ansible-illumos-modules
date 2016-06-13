@@ -7,6 +7,7 @@ So far, following modules have been developed:
 ## Solaris/illumos networking
 - [dladm_etherstub](https://github.com/xen0l/ansible-illumos/blob/master/library/dladm_etherstub) - Manage etherstubs on Solaris/illumos systems.
 - [dladm_vnic](https://github.com/xen0l/ansible-illumos/blob/master/library/dladm_vnic) - Manage VNICs on Solaris/illumos systems.
+- [ipadm_addr](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/ipadm_addr.py) - manage IP addresses on Solaris/illumos systems.
 - [ipadm_if](https://github.com/xen0l/ansible-illumos/blob/master/library/ipadm_if) - Manage IP interfaces  on Solaris/illumos systems.
 - [ipadm_prop](https://github.com/xen0l/ansible-illumos/blob/master/library/ipadm_prop) - Manage protocol properties on Solaris/illumos systems.
 
@@ -28,7 +29,6 @@ I plan to develop more modules. The list of following modules, which I will be w
 - dladm_aggr - manage link aggregations on Solaris/illumos systems
 - dladm_linkprop - manage link properties on Solaris/illumos systems
 - ipadm_ifprop - manage interface properties on Solaris/illumos systems
-- ipadm_addr - manage IP addresses on Solaris/illumos systems
 - ipadm_addrprop - manage IP address properties on Solaris/illumos systems
 - flowadm_flow - manage flows on Solaris/illumos systems
 - flowadm_flowprop - manager flow properties on Solaris/illumos systems
