@@ -10,6 +10,7 @@ So far, following modules have been developed:
 - [ipadm_addr](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/ipadm_addr.py) - manage IP addresses on Solaris/illumos systems.
 - [ipadm_if](https://github.com/xen0l/ansible-illumos/blob/master/library/ipadm_if) - Manage IP interfaces  on Solaris/illumos systems.
 - [ipadm_prop](https://github.com/xen0l/ansible-illumos/blob/master/library/ipadm_prop) - Manage protocol properties on Solaris/illumos systems.
+- [flowadm](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/flowadm.py) -  Manage bandwidth resource control and priority for protocols, services and zones.
 
 ## Solaris/illumos processes
 - [solaris_project](https://github.com/xen0l/ansible-illumos/blob/master/library/solaris_project) - Manage Solaris/illumos projects
@@ -30,8 +31,6 @@ I plan to develop more modules. The list of following modules, which I will be w
 - dladm_linkprop - manage link properties on Solaris/illumos systems
 - ipadm_ifprop - manage interface properties on Solaris/illumos systems
 - ipadm_addrprop - manage IP address properties on Solaris/illumos systems
-- flowadm_flow - manage flows on Solaris/illumos systems
-- flowadm_flowprop - manager flow properties on Solaris/illumos systems
 
 ### Logging
 - logadm - manage log rotations on Solaris/illumos systems
