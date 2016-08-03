@@ -32,6 +32,10 @@ I plan to develop more modules. The list of following modules, which I will be w
 - ipadm_ifprop - manage interface properties on Solaris/illumos systems
 - ipadm_addrprop - manage IP address properties on Solaris/illumos systems
 
+### System 
+- coreadm - core file administration
+- dumpadm - configure operating system crash dump
+
 ### Logging
 - logadm - manage log rotations on Solaris/illumos systems
 
