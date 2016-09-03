@@ -31,6 +31,7 @@ I plan to develop more modules. The list of following modules, which I will be w
 - dladm_linkprop - manage link properties on Solaris/illumos systems
 - ipadm_ifprop - manage interface properties on Solaris/illumos systems
 - ipadm_addrprop - manage IP address properties on Solaris/illumos systems
+- routeadm - manage IP forwarding and routing configuration on Solaris/illumos systems
 
 ### System 
 - coreadm - core file administration
