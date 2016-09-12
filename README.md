@@ -39,7 +39,8 @@ I plan to develop more modules. The list of following modules, which I will be w
 - svccfg - manage SMF properties on Solaris/illumos systems
 
 ### Boot Environments
-- beadm - manage ZFS boot environments on Solaris/illumos/FreeBSD systems
+- [beadm](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/beadm.py) - manage ZFS boot environments on Solaris/illumos/FreeBSD systems
+- beadm_facts - get facts about boot environments on Solaris/illumos/FreeBSD systems
 
 ### IPS
 - pkg5_mediator - manage IPS mediators on Solaris/illumos systems
