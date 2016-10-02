@@ -15,6 +15,13 @@ So far, following modules have been developed:
 ## Solaris/illumos processes
 - [solaris_project](https://github.com/xen0l/ansible-illumos/blob/master/library/solaris_project) - Manage Solaris/illumos projects
 
+## ZFS datasets and pools
+- [zfs_facts](https://github.com/xen0l/ansible-illumos/blob/master/library/zfs_facts.py) - Gather facts about ZFS datasets
+- [zpool_facts](https://github.com/xen0l/ansible-illumos/blob/master/library/zpool_facts.py) - Gather facts about ZFS pools
+
+## Boot Environments
+- [beadm](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/beadm.py) - manage ZFS boot environments on Solaris/illumos/FreeBSD systems
+
 ## SmartOS
 - ~~[smartos_image_facts](https://github.com/ansible/ansible-modules-extras/blob/devel/cloud/smartos/smartos_image_facts.py) - Get SmartOS image details.~~ (already upstreamed)
 - [smartos_image_source](https://github.com/xen0l/ansible-illumos/blob/master/library/smartos_image_source) - Manage image sources on SmartOS compute nodes.
@@ -33,7 +40,7 @@ I plan to develop more modules. The list of following modules, which I will be w
 - ipadm_addrprop - manage IP address properties on Solaris/illumos systems
 - routeadm - manage IP forwarding and routing configuration on Solaris/illumos systems
 
-### System 
+### System
 - coreadm - core file administration
 - dumpadm - configure operating system crash dump
 
@@ -44,7 +51,6 @@ I plan to develop more modules. The list of following modules, which I will be w
 - svccfg - manage SMF properties on Solaris/illumos systems
 
 ### Boot Environments
-- [beadm](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/beadm.py) - manage ZFS boot environments on Solaris/illumos/FreeBSD systems
 - beadm_facts - get facts about boot environments on Solaris/illumos/FreeBSD systems
 
 ### IPS
