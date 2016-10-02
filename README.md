@@ -5,22 +5,22 @@ This repository contains modules for managing certain aspects of Solarish system
 So far, following modules have been developed:
 
 ## Solaris/illumos networking
-- [dladm_etherstub](https://github.com/xen0l/ansible-illumos/blob/master/library/dladm_etherstub) - Manage etherstubs on Solaris/illumos systems.
-- [dladm_vnic](https://github.com/xen0l/ansible-illumos/blob/master/library/dladm_vnic) - Manage VNICs on Solaris/illumos systems.
-- [ipadm_addr](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/ipadm_addr.py) - manage IP addresses on Solaris/illumos systems.
-- [ipadm_if](https://github.com/xen0l/ansible-illumos/blob/master/library/ipadm_if) - Manage IP interfaces  on Solaris/illumos systems.
-- [ipadm_prop](https://github.com/xen0l/ansible-illumos/blob/master/library/ipadm_prop) - Manage protocol properties on Solaris/illumos systems.
-- [flowadm](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/flowadm.py) -  Manage bandwidth resource control and priority for protocols, services and zones.
+- ~~[dladm_etherstub](https://github.com/xen0l/ansible-illumos/blob/master/library/dladm_etherstub) - Manage etherstubs on Solaris/illumos systems.~~ (already upstreamed)
+- ~~[dladm_vnic](https://github.com/xen0l/ansible-illumos/blob/master/library/dladm_vnic) - Manage VNICs on Solaris/illumos systems.~~ (already upstreamed)
+- ~~[ipadm_addr](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/ipadm_addr.py) - manage IP addresses on Solaris/illumos systems.~~ (already upstreamed)
+- ~~[ipadm_if](https://github.com/xen0l/ansible-illumos/blob/master/library/ipadm_if) - Manage IP interfaces  on Solaris/illumos systems.~~ (already upstreamed)
+- ~~[ipadm_prop](https://github.com/xen0l/ansible-illumos/blob/master/library/ipadm_prop) - Manage protocol properties on Solaris/illumos systems.~~ (already upstreamed)
+- ~~[flowadm](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/flowadm.py) -  Manage bandwidth resource control and priority for protocols, services and zones.~~ (already upstreamed)
 
 ## Solaris/illumos processes
 - [solaris_project](https://github.com/xen0l/ansible-illumos/blob/master/library/solaris_project) - Manage Solaris/illumos projects
 
 ## ZFS datasets and pools
-- [zfs_facts](https://github.com/xen0l/ansible-illumos/blob/master/library/zfs_facts.py) - Gather facts about ZFS datasets
-- [zpool_facts](https://github.com/xen0l/ansible-illumos/blob/master/library/zpool_facts.py) - Gather facts about ZFS pools
+- [zfs_facts](https://github.com/xen0l/ansible-illumos/blob/master/library/zfs_facts.py) - Gather facts about ZFS datasets.
+- [zpool_facts](https://github.com/xen0l/ansible-illumos/blob/master/library/zpool_facts.py) - Gather facts about ZFS pools.
 
 ## Boot Environments
-- [beadm](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/beadm.py) - manage ZFS boot environments on Solaris/illumos/FreeBSD systems
+- [beadm](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/beadm.py) - manage ZFS boot environments on Solaris/illumos/FreeBSD systems.
 
 ## SmartOS
 - ~~[smartos_image_facts](https://github.com/ansible/ansible-modules-extras/blob/devel/cloud/smartos/smartos_image_facts.py) - Get SmartOS image details.~~ (already upstreamed)
