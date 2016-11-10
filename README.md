@@ -43,6 +43,7 @@ I plan to develop more modules. The list of following modules, which I will be w
 ### System
 - coreadm - core file administration
 - dumpadm - configure operating system crash dump
+- ldom_facts - gather facts about LDOMs
 
 ### Logging
 - logadm - manage log rotations on Solaris/illumos systems
