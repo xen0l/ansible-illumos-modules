@@ -44,6 +44,7 @@ I plan to develop more modules. The list of following modules, which I will be w
 - coreadm - core file administration
 - dumpadm - configure operating system crash dump
 - ldom_facts - gather facts about LDOMs
+- kstat_facts - query kstats for facts
 
 ### Storage
 - zpool - manage (Open)ZFS pools on Linux/FreeBSD/Solaris/illumos systems
