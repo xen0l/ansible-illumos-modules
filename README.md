@@ -36,6 +36,9 @@ I plan to develop more modules. The list of following modules, which I will be w
 ### Networking
 - dladm_aggr - manage link aggregations on Solaris/illumos systems
 - dladm_linkprop - manage link properties on Solaris/illumos systems
+- dladm_iptun - manage IP tunnel interfaces on Solaris/illumos systems
+- dladm_bridge - manage bridges on Solaris/illumos systems
+- dladm_vlan - manage VLAN links on Solaris/illumos systems
 - ipadm_ifprop - manage interface properties on Solaris/illumos systems
 - ipadm_addrprop - manage IP address properties on Solaris/illumos systems
 - routeadm - manage IP forwarding and routing configuration on Solaris/illumos systems
