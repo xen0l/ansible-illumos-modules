@@ -45,6 +45,9 @@ I plan to develop more modules. The list of following modules, which I will be w
 - dumpadm - configure operating system crash dump
 - ldom_facts - gather facts about LDOMs
 
+### Storage
+- zpool - manage (Open)ZFS pools on Linux/FreeBSD/Solaris/illumos systems
+
 ### Logging
 - logadm - manage log rotations on Solaris/illumos systems
 
