@@ -56,7 +56,9 @@ I plan to develop more modules. The list of following modules, which I will be w
 - logadm - manage log rotations on Solaris/illumos systems
 
 ### SMF
-- svccfg - manage SMF properties on Solaris/illumos systems
+- smf_property - manage SMF properties on Solaris/illumos systems
+- smf_manifest - manage SMF manifests on Solaris/illumos systems
+- smf_instance - manage SMF instances on Solaris/illumos systems
 
 ### Boot Environments
 - beadm_facts - get facts about boot environments on Solaris/illumos/FreeBSD systems
