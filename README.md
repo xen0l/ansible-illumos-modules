@@ -8,7 +8,7 @@ So far, following modules have been developed:
 - ~~[dladm_etherstub](https://github.com/xen0l/ansible-illumos/blob/master/library/dladm_etherstub) - Manage etherstubs on Solaris/illumos systems.~~ (already upstreamed)
 - ~~[dladm_vnic](https://github.com/xen0l/ansible-illumos/blob/master/library/dladm_vnic) - Manage VNICs on Solaris/illumos systems.~~ (already upstreamed)
 - [dladm_vlan](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/dladm_vlan.py) - manage VLAN links on Solaris/illumos systems
-- ~~[ipadm_addr](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/ipadm_addr.py) - manage IP addresses on Solaris/illumos systems.~~ (already upstreamed)
+- [ipadm_addr](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/ipadm_addr.py) - manage IP addresses on Solaris/illumos systems.
 - [ipadm_addrprop](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/ipadm_addrprop.py) - manage IP address properties on Solaris/illumos systems
 - ~~[ipadm_if](https://github.com/xen0l/ansible-illumos/blob/master/library/ipadm_if) - Manage IP interfaces  on Solaris/illumos systems.~~ (already upstreamed)
 - [ipadm_ifprop](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/ipadm_ifprop.py) - manage interface properties on Solaris/illumos systems
