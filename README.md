@@ -7,6 +7,7 @@ So far, following modules have been developed:
 ## Solaris/illumos networking
 - ~~[dladm_etherstub](https://github.com/xen0l/ansible-illumos/blob/master/library/dladm_etherstub) - Manage etherstubs on Solaris/illumos systems.~~ (already upstreamed)
 - ~~[dladm_vnic](https://github.com/xen0l/ansible-illumos/blob/master/library/dladm_vnic) - Manage VNICs on Solaris/illumos systems.~~ (already upstreamed)
+- [dladm_iptun](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/dladm_iptun.py) - manage IP tunnel interfaces on Solaris/illumos systems
 - [dladm_vlan](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/dladm_vlan.py) - manage VLAN links on Solaris/illumos systems
 - [ipadm_addr](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/ipadm_addr.py) - manage IP addresses on Solaris/illumos systems.
 - [ipadm_addrprop](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/ipadm_addrprop.py) - manage IP address properties on Solaris/illumos systems
@@ -39,7 +40,6 @@ I plan to develop more modules. The list of following modules, which I will be w
 ### Networking
 - dladm_aggr - manage link aggregations on Solaris/illumos systems
 - dladm_linkprop - manage link properties on Solaris/illumos systems
-- dladm_iptun - manage IP tunnel interfaces on Solaris/illumos systems
 - dladm_bridge - manage bridges on Solaris/illumos systems
 - routeadm - manage IP forwarding and routing configuration on Solaris/illumos systems
 
