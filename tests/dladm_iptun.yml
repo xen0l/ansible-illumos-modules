@@ -1,0 +1,25 @@
+---
+- name: Test dladm_iptun module
+  hosts: default 
+  gather_facts: false
+  become: True
+  become_method: sudo
+  tasks:
+    - ipadm_if: name=e1000g0 state=present
+    - ipadm_addr: addrobj=e1000g0/test address=192.168.1.1/32 state=present
+
+    - dladm_iptun: name=iptun0 local_address=192.168.1.1 remote_address=2.2.2.2 type=ipv4 state=present
+    - dladm_iptun: name=iptun0 local_address=192.168.1.1 remote_address=2.2.2.2 type=ipv4 state=present
+      register: state
+      failed_when: state|changed
+
+    - dladm_iptun: name=iptun0
+      ignore_errors: yes
+
+    - dladm_iptun: name=iptun0 type=ipv4 local_address=192.168.1.1
+      ignore_errors: yes
+
+    - dladm_iptun: name=iptun0 state=absent
+    - dladm_iptun: name=iptun0 state=absent
+      register: state
+      failed_when: state|changed

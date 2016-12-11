@@ -1,0 +1,27 @@
+---
+- name: Test ipadm_addrprop module
+  hosts: default 
+  gather_facts: false
+  become: True
+  become_method: sudo
+  tasks:
+    - ipadm_addr: addr=10.0.0.1/32 addrobj=e1000g0/test4 state=present
+    - shell: ipadm show-addrprop -c -o current e1000g0/test4
+      register: prefixlen
+    - assert:
+        that:
+          - "'32' in prefixlen.stdout"
+        msg: "Prefixlen is not /32"
+    - ipadm_addrprop: name=prefixlen addrobj=e1000g0/test4 value=24 state=present
+
+    - shell: ipadm show-addrprop -c -o current e1000g0/test4
+      register: prefixlen
+    - assert:
+        that:
+          - "'24' in prefixlen.stdout"
+        msg: "Prefixlen is not /24"
+
+    - ipadm_addrprop: name=prefixlen addrobj=e1000g0/test4 state=reset
+    - ipadm_addrprop: name=prefixlen addrobj=e1000g0/test4 state=reset
+
+    - ipadm_addr: addrobj=e1000g0/test4 state=absent

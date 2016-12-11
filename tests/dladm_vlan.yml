@@ -1,0 +1,23 @@
+---
+- name: Test dladm_vlan module
+  hosts: default 
+  gather_facts: false
+  become: True
+  become_method: sudo
+  tasks:
+    - dladm_vlan: name=vlan42 vlan_id=42 link=e1000g0 state=present
+    - dladm_vlan: name=vlan42 vlan_id=42 link=e1000g0 state=present
+      register: state
+      failed_when: state|changed
+
+    - dladm_vlan: name=vlan42 vlan_id=42
+      ignore_errors: yes
+    - dladm_vlan: name=vlan42
+      ignore_errors: yes
+
+
+    - dladm_vlan: name=vlan4200 vlan_id=4200 link=e1000g0 state=present
+      ignore_errors: yes
+
+    - dladm_vlan: name=vlan42 state=absent
+    - dladm_vlan: name=vlan42 state=absent

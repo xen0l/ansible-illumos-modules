@@ -1,0 +1,20 @@
+---
+- name: Test ipadm_ifprop module
+  hosts: default 
+  gather_facts: false
+  become: True
+  become_method: sudo
+  tasks:
+    - ipadm_ifprop: protocol=ipv4 name=mtu interface=e1000g0 value=1400
+    - ipadm_ifprop: protocol=ipv4 name=mtu interface=e1000g0 value=1400
+    - ipadm_ifprop: protocol=ipv4 name=mtu interface=e1000g0 state=reset
+    - ipadm_ifprop: protocol=ipv4 name=mtu interface=e1000g0 state=absent
+
+    - ipadm_ifprop: protocol=ipv6 name=arp interface=e1000g0 state=absent
+      ignore_errors: yes
+
+    - ipadm_ifprop: protocol=ipv6 name=mtu interface=e1000g0 value=1480
+    - ipadm_ifprop: protocol=ipv6 name=mtu interface=e1000g0 value=1400
+    - ipadm_ifprop: protocol=ipv6 name=mtu interface=e1000g0 value=1400
+    - ipadm_ifprop: protocol=ipv6 name=mtu interface=e1000g0 state=reset
+    - ipadm_ifprop: protocol=ipv6 name=mtu interface=e1000g0 state=absent
