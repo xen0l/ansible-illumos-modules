@@ -1,0 +1,45 @@
+---
+- name: Test dladm_linkprop module
+  hosts: default
+  gather_facts: false
+  become: True
+  become_method: sudo
+  tasks:
+    - ipadm_if: name=e1000g1 state=absent
+
+    - dladm_linkprop: link=e1000g1 property=mtu state=present
+      ignore_errors: true
+      register: state
+
+    - assert:
+        that:
+          - state.failed == True
+        msg: "Argument 'value' validation failed!"
+
+    - dladm_linkprop: link=e1000g1 property=mtu value=9000 state=present
+    - dladm_linkprop: link=e1000g1 property=mtu value=9000 state=present
+      register: state
+      failed_when: state|changed
+
+    - dladm_linkprop: link=e1000g1 property=mtu value=1560 state=present
+    - dladm_linkprop: link=e1000g1 property=mtu value=1560 state=present
+      register: state
+      failed_when: state|changed
+
+    - dladm_linkprop: link=e1000g1 property=mtu state=reset
+    - dladm_linkprop: link=e1000g1 property=mtu state=reset
+      register: state
+      failed_when: state|changed
+
+    - dladm_linkprop: link=e1000g1 property=state value=down state=present
+      ignore_errors: true
+      register: state
+
+    - assert:
+        that:
+          - state.failed == True
+        msg: "Modification of read-only properties succeded!"
+
+
+    - ipadm_if: name=e1000g1 state=present
+    - ipadm_addr: addrobj=e1000g1/v4 address=192.168.33.10/24 state=present
