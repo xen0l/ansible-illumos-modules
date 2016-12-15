@@ -37,6 +37,7 @@ options:
             - VLAN underlying link name.
         required: true
     temporary:
+        description:
             - Specifies that the VLAN interface is temporary. Temporary VLANs
               do not persist across reboots.
         required: false
