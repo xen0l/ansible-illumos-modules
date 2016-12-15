@@ -34,7 +34,7 @@ options:
         description:
             - Specifiies an IP address to configure in CIDR notation.
         required: false
-        aliases: addr
+        aliases: [ 'addr' ]
     addrtype:
         description:
             - Specifiies a type of IP address to configure.
