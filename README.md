@@ -21,11 +21,11 @@ So far, following modules have been developed:
 - [solaris_project](https://github.com/xen0l/ansible-illumos/blob/master/library/solaris_project) - Manage Solaris/illumos projects
 
 ## ZFS datasets and pools
-- [zfs_facts](https://github.com/xen0l/ansible-illumos/blob/master/library/zfs_facts.py) - Gather facts about ZFS datasets.
-- [zpool_facts](https://github.com/xen0l/ansible-illumos/blob/master/library/zpool_facts.py) - Gather facts about ZFS pools.
+- ~~[zfs_facts](https://github.com/xen0l/ansible-illumos/blob/master/library/zfs_facts.py) - Gather facts about ZFS datasets.~~ (already upstreamed)
+- ~~[zpool_facts](https://github.com/xen0l/ansible-illumos/blob/master/library/zpool_facts.py) - Gather facts about ZFS pools.~~ (already upstreamed)
 
 ## Boot Environments
-- [beadm](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/beadm.py) - manage ZFS boot environments on Solaris/illumos/FreeBSD systems.
+- ~~[beadm](https://github.com/xen0l/ansible-illumos-modules/blob/master/library/beadm.py) - manage ZFS boot environments on Solaris/illumos/FreeBSD systems.~~ (already upstreamed)
 
 ## SmartOS
 - ~~[smartos_image_facts](https://github.com/ansible/ansible-modules-extras/blob/devel/cloud/smartos/smartos_image_facts.py) - Get SmartOS image details.~~ (already upstreamed)
